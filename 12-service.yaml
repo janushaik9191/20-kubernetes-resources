@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+# labels can add extra information to the PODS and used as internal resource selectors
+  name: labels
+  labels:
+    project: expense
+    module: backend
+    environment: dev
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  selector: # based on these labels it will selected the internal resource-pod
+    project: expense
+    module: backend
+    environment: dev
+  ports:
+  - name: nginx-svc-port
+    protocol: TCP
+    port: 80 # service port
+    targetPort: 80 # container port
