@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+# labels can add extra information to the PODS and used as internal resource selectors
+  name: labels
+  labels:
+    project: expense
+    module: backend
+    environment: dev
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-np
+spec:
+  type: NodePort # if type not specified then default cluster-ip service created
+  selector:
+    project: expense
+    module: backend
+    environment: dev
+  ports:
+  - name: nginx-svc-port
+    protocol: TCP
+    port: 80 # service port
+    targetPort: 80 # container port
