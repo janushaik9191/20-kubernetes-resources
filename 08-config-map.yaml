@@ -1,0 +1,7 @@
+apiVersion : v1
+kind : ConfigMap
+metadata :
+  name : nginx-config # name of the config map
+data : # you can add any number of variables in this config map, you can refer values or you can directly call the file in pod definition
+  cource : devops
+  duration : "120 hrs"
