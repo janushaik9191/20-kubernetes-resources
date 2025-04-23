@@ -1,5 +1,6 @@
 apiVersion: apps/v1
 kind: ReplicaSet
+# replicaset will always ensure that desired number of pods and it doesnot update the changes in image
 metadata:
   name: nginx
   labels:
@@ -24,4 +25,4 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:stable-perl
+        image: nginx
